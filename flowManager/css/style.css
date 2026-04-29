@@ -1,0 +1,330 @@
+[hidden] {
+    display: none !important;
+}
+/* --- VARIABLES & RESET --- */
+:root {
+    --primary-color: #4f46e5;    /* Indigo (Boutons) */
+    --accent-purple: #8b5cf6;    /* Violet (Têtes de tableau) */
+    --secondary-color: #6366f1;
+    --bg-color: #f8fafc;         
+    --sidebar-color: #1e293b;    
+    --text-main: #334155;
+    --text-light: #94a3b8;
+    --white: #ffffff;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --border: #e2e8f0;
+}/* Note : Pour cette option, ajoute "border-right: 1px solid var(--border);" à ton sélecteur 'nav' dans le CSS *//* Note : Pour cette option, ajoute "border-right: 1px solid var(--border);" à ton sélecteur 'nav' dans le CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+}
+
+/* --- LAYOUT GLOBAL --- */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- SIDEBAR (Navigation) --- */
+nav {
+    width: 260px;
+    background-color: var(--sidebar-color);
+    color: var(--white);
+    padding: 2rem 1.5rem;
+    position: fixed;
+    height: 100vh;
+}
+
+nav h1, nav h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--white);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+nav a {
+    display: block;
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+}
+
+/* --- GESTION SIDEBAR RÉTRACTABLE --- */
+
+nav {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sidebar-hidden {
+    margin-left: -250px; 
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- Ajustement du contenu principal quand la sidebar est masquée --- */
+.app-container.full-width main {
+    margin-left: 0;
+}
+
+/* --- Style des petits boutons flèches --- */
+.btn-icon {
+    background: transparent;
+    border: none;
+    color: var(--text-light); 
+    opacity: 0.6; 
+    
+    width: 24px;
+    height: 24px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    z-index: 100;
+}
+
+/* On ne le rend visible et coloré qu'au passage de la souris */
+.btn-icon:hover {
+    opacity: 1;
+    color: var(--primary-color);
+    background: rgba(79, 70, 229, 0.1); 
+    border-radius: 4px;
+}
+
+/* Positionnement spécifique pour le bouton fermer (dans la sidebar) */
+#close-sidebar {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+}
+
+/* Positionnement spécifique pour le bouton ouvrir (sur le fond clair) */
+#open-sidebar {
+    display: none !important;
+    position: fixed;
+    left: 10px;
+    top: 15px;
+    background: var(--white); /* On lui remet un petit fond blanc pour qu'il soit cliquable */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid var(--border);
+}
+
+.sidebar-hidden + main #open-sidebar,
+.full-width #open-sidebar {
+    display: flex !important;
+}
+
+/* --- PROTECTION DU CONTENU --- */
+
+main {
+    flex: 1;
+    /* On garde la marge à gauche pour la sidebar quand elle est ouverte */
+    margin-left: 260px; 
+    
+    /* On ajoute un padding interne pour que le contenu ne colle JAMAIS aux bords */
+    padding: 2rem 4rem; 
+    
+    transition: all 0.3s ease;
+    min-width: 0; /* Évite que les tableaux ne cassent le layout */
+}
+
+/* --- QUAND LA SIDEBAR EST CACHÉE --- */
+
+/* On remet la marge à 0, mais le padding de 4rem ci-dessus 
+   empêchera le texte de se coller ou d'être rogné à gauche */
+.sidebar-hidden + main,
+.full-width main {
+    margin-left: 0 !important;
+}
+
+/* Optionnel : Centrer le contenu pour un look plus "fiche" quand c'est large */
+.sidebar-hidden + main header,
+.sidebar-hidden + main section {
+    max-width: 1200px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- CONTENU PRINCIPAL --- */
+main {
+    flex: 1;
+    margin-left: 60px; 
+    padding: 2rem 3rem;
+}
+
+header {
+    margin-bottom: 2.5rem;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    color: var(--sidebar-color);
+}
+
+/* --- DASHBOARD CARDS (Widgets) --- */
+section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+section div[style*="border"] {
+    background: var(--white) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: block !important; 
+}
+
+section div h3 {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+section div p strong {
+    font-size: 1.5rem;
+    color: var(--sidebar-color);
+}
+
+/* --- TABLEAUX --- */
+
+th, td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    background-color: var(--accent-purple); 
+    color: var(--white);                    
+    font-weight: 600;
+    text-transform: uppercase;              
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 1.2rem 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0;
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+tr:hover td {
+    background-color: #f1f5f9;
+    transition: 0.2s;
+}
+
+
+/* --- FORMULAIRES --- */
+form {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    max-width: 600px;
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* --- FOOTER --- */
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+/* --- ACTIONS & SUPPRESSION --- */
+
+td:last-child, th:last-child {
+    text-align: center;
+    width: 100px;
+}
+
+.btn-delete {
+    background-color: transparent;
+    color: var(--danger);
+    border: 1px solid #fee2e2;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-delete:hover {
+    background-color: var(--danger);
+    color: white;
+    border-color: var(--danger);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+/* Animation lors de la suppression d'une ligne */
+tbody tr {
+    transition: all 0.3s ease;
+}
+
+/* Style pour les cellules de la colonne Actions au survol de la ligne */
+tr:hover .btn-delete {
+    border-color: var(--danger);
+}

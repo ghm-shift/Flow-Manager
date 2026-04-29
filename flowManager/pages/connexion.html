@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion - Flow Manager</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .login-container { max-width: 400px; margin: 100px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .login-container h1 { text-align: center; margin-bottom: 20px; }
+        .error-msg { color: var(--danger); text-align: center; margin-bottom: 15px; display: none; }
+    </style>
+</head>
+<body style="background-color: var(--bg-color);">
+
+    <div class="login-container">
+        <h1>Flow Manager</h1>
+        <p class="error-msg" id="login-error">Identifiants incorrects.</p>
+        <form id="login-form">
+            <label>Adresse Email</label>
+            <input type="email" id="email" placeholder="admin@flow.com" required>
+            
+            <label>Mot de passe</label>
+            <input type="password" id="password" placeholder="••••••••" required>
+            
+            <button type="submit" style="width: 100%; margin-top: 15px;">Se connecter</button>
+        </form>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

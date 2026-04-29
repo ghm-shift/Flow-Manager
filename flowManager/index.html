@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Flow Manager - Dashboard</title> 
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <nav id="sidebar">
+        <button id="close-sidebar" class="btn-icon">❮</button>
+        <h1>Flow Manager</h1>
+        <a href="index.html">Tableau de bord</a>
+        <a href="pages/clients.html">Clients</a>
+        <a href="pages/vuProjet.html">Projets</a>
+        <a href="pages/suiviFactures.html">Factures</a>
+        <a href="pages/depenses.html">Dépenses</a>
+        <a href="pages/utilisateurs.html" id="link-admin" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; padding-top: 20px;">Accès Utilisateurs</a>
+        
+        <a href="#" id="btn-logout" style="margin-top: auto; color: #ff4d4d; font-weight: bold;">Se déconnecter</a>
+    </nav>
+    </nav>
+
+    <main>
+        <button id="open-sidebar" class="btn-icon" >❯</button>
+        <header>
+            <h1>Tableau de Bord</h1>
+            <p>Bienvenue dans votre espace de travail.</p>
+        </header>
+
+        <section>
+            <div>
+                <h3>Chiffre d'Affaires</h3>
+                <p><strong id="ca-total">0 €</strong></p>
+            </div>
+            <div>
+                <h3>Projets Actifs</h3>
+                <p><strong id="projets-actifs">0</strong> projets en cours</p>
+            </div>
+            <div>
+                <h3>Montant en attente</h3>
+                <p><strong id="montant-attente" style="color: var(--danger);">0 €</strong></p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section style="margin-top: 30px; max-width: 500px; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h3 style="text-align: center; margin-bottom: 20px;">Répartition des Revenus</h3>
+            <canvas id="revenueChart"></canvas>
+        </section>
+
+        </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

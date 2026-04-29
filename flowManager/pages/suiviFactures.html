@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Suivi des Factures - Flow Manager</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav id="sidebar">
+            <button id="close-sidebar" class="btn-icon">❮</button>
+            <h1>Flow Manager</h1>
+            <a href="../index.html">Tableau de bord</a>
+            <a href="clients.html">Clients</a>
+            <a href="vuProjet.html">Projets</a>
+            <a href="suiviFactures.html">Factures</a>
+            <a href="depenses.html">Dépenses</a>
+
+            <a href="utilisateurs.html" id="link-admin" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; padding-top: 20px;">Accès Utilisateurs</a>
+        
+        <a href="#" id="btn-logout" style="margin-top: auto; color: #ff4d4d; font-weight: bold;">Se déconnecter</a>
+        </nav>
+
+       <main>
+            <button id="open-sidebar" class="btn-icon">❯</button>
+
+            <header>
+                <h1>Suivi des Factures</h1>
+                <button id="toggle-form" class="btn-primary">+ Ajouter une facture</button>
+            </header>
+
+            <section id="add-form-section" hidden style="margin-bottom: 3rem;">
+                <h3>Créer une nouvelle facture</h3>
+                <form id="facture-form">
+                    <label>ID Client</label>
+                    <input type="number" placeholder="ex: 123" required>
+                    <label>Montant HT</label>
+                    <input type="number" placeholder="0.00" step="0.01" required>
+                    <label>TVA (%)</label>
+                    <input type="number" placeholder="20.00" step="0.01" value="20.00" required>
+                    <label>Statut de paiement</label>
+                        <select required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid var(--border); border-radius: 6px;">
+                            <option value="En attente" selected>En attente</option>
+                            <option value="Payée">Payée</option>
+                            <option value="En retard">En retard</option>
+                        </select>
+                    <label>Échéance</label>
+                    <input type="date" required>
+                    <button type="submit">Générer la facture</button>
+                </form>
+            </section>
+
+            
+
+            <section style="display: block;">
+                <h3>Liste des factures</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Client</th>
+                            <th>Montant HT</th>
+                            <th>Échéance</th>
+                            <th>Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>F-2026-001</td>
+                            <td>Client A</td>
+                            <td>600 €</td>
+                            <td>15/02/2026</td>
+                            <td style="color: var(--success);">Payée</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main> </div> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"> </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"> </script> 
+        <script src="../js/script.js"></script>
+</body>
+</html>

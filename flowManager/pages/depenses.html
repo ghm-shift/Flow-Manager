@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dépenses - Flow Manager</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="app-container">k
+        <nav id="sidebar">
+            <button id="close-sidebar" class="btn-icon">❮</button>
+            <h1>Flow Manager</h1>
+            <a href="../index.html">Tableau de bord</a>
+            <a href="clients.html">Clients</a>
+            <a href="vuProjet.html">Projets</a>
+            <a href="suiviFactures.html">Factures</a>
+            <a href="depenses.html">Dépenses</a>
+
+            <a href="utilisateurs.html" id="link-admin" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; padding-top: 20px;">Accès Utilisateurs</a>
+        
+        <a href="#" id="btn-logout" style="margin-top: auto; color: #ff4d4d; font-weight: bold;">Se déconnecter</a>
+        </nav>
+
+        <main>
+            <button id="open-sidebar" class="btn-icon" >❯</button>
+
+            <header>
+                <h1>Gestion des Dépenses</h1>
+                <button id="toggle-form" class="btn-primary">+ Ajouter une dépense</button>
+            </header>
+
+            <section id="add-form-section" hidden style="margin-bottom: 3rem;">
+                <h3>Ajouter une dépense</h3>
+                <form action="#">
+                    <label>Nature</label>
+                    <input type="text" placeholder="ex: Adobe Suite" required>
+                    <label>Montant HT</label>
+                    <input type="number" placeholder="0.00" step="0.01" required>
+                    <label>Date</label>
+                    <input type="date" required>
+                    <button type="submit">Enregistrer la dépense</button>
+                </form>
+            </section>
+
+            <section style="display: block;">
+                <h3>Historique</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Montant</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01/02/2026</td>
+                            <td>Abonnement Logiciel</td>
+                            <td>29.99 €</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+</html>

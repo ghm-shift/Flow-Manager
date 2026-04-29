@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients - Flow Manager</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav id="sidebar">
+            <button id="close-sidebar" class="btn-icon">❮</button>
+            <h1>Flow Manager</h1>
+            <a href="../index.html">Tableau de bord</a>
+            <a href="clients.html">Clients</a>
+            <a href="vuProjet.html">Projets</a>
+            <a href="suiviFactures.html">Factures</a>
+            <a href="depenses.html">Dépenses</a>
+
+            <a href="utilisateurs.html" id="link-admin" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; padding-top: 20px;">Accès Utilisateurs</a>
+        
+        <a href="#" id="btn-logout" style="margin-top: auto; color: #ff4d4d; font-weight: bold;">Se déconnecter</a>
+    </nav>
+        </nav>
+
+        <main>
+            <button id="open-sidebar" class="btn-icon" >❯</button>
+
+            <header>
+                <h1>Gestion des Clients</h1>
+                <button id="toggle-form" class="btn-primary">+ Ajouter un client</button>
+            </header>
+
+            <section id="add-form-section" hidden style="margin-bottom: 3rem;">
+                <h3>Ajouter un Client</h3>
+                <form action="#">
+                    <label>Nom du Client</label>
+                    <input type="text" placeholder="ex: Apple" required>
+                    <label>Email</label>
+                    <input type="email" placeholder="contact@client.com" required>
+                    <label>Projet</label>
+                    <input type="text" placeholder="ex: Création de site">
+                    <button type="submit">Ajouter le client</button>
+                </form>
+            </section>
+
+            <section style="display: block;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Projet en cours</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Entreprise ABC</td>
+                            <td>contact@abc.com</td>
+                            <td>Refonte Site Web</td>
+                        </tr>
+                        <tr>
+                            <td>Studio Design</td>
+                            <td>hello@studio.fr</td>
+                            <td>Logo Pack</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+</html>
